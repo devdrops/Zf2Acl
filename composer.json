@@ -3,7 +3,7 @@
     "description": "Access control list",
     "type": "library",
     "keywords": ["acl","role","resource","privilege","doctrine","zend"],
-    "homepage": "https://github.com/jhonmike/Zf2Base",
+    "homepage": "https://github.com/jhonmike/Zf2Acl",
     "license": "MIT",
     "authors": [
         {
@@ -20,7 +20,7 @@
     },
     "autoload": {
         "psr-0": {
-            "Zf2Base": "src"
+            "Zf2Acl": "src"
         }
     }
 }
