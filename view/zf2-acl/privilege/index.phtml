@@ -1,0 +1,97 @@
+<!-- row -->
+<div class="row">
+    <!-- col -->
+    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-5">
+        <h1 class="page-title txt-color-blueDark">
+            <!-- PAGE HEADER -->
+            <i class="fa-fw fa fa-home"></i> 
+                Lista de controle de acessos
+            <span>>  
+                Privilégios
+            </span>
+        </h1>
+    </div>
+    <div class="col-xs-3 col-sm-4 col-md-1 col-lg-3 text-right">
+        <a class="btn btn-primary" title="Novo" href="<?php echo $this->url('acl-all/default',array('controller'=>'privilege','action'=>'register')); ?>"><i class="fa fa-pencil-square-o"></i> Novo</a>
+    </div>
+    <div class="col-xs-9 col-sm-12 col-md-5 col-lg-4">
+        <form class="form-inline text-right" role="form">
+            <div class="form-group">
+                <label class="sr-only" for="filter">Filtrar</label>
+                <input type="text" class="form-control" id="filter" name="filter" placeholder="Filtrar">
+            </div>
+            <button type="submit" class="btn btn-default"><i class="fa fa-filter"></i> Filtrar</button>
+        </form>
+    </div>
+    <!-- end col -->
+</div>
+<!-- end row -->
+<?php if(count($flashMessages)) {
+    foreach ($flashMessages as $msg) { ?>
+        <div class="alert alert-block alert-success">
+            <a class="close" data-dismiss="alert" href="#">×</a>
+            <p>
+                <?php echo $msg; ?>
+            </p>
+        </div>
+    <?php }
+} ?>
+<!-- row -->
+<div class="row">
+    <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="widget-body">
+            <?php if (count($this->data) > 0 && !is_null($this->data)) { ?>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th class="hidden-xs hidden-sm">ID</th>
+                        <th>Papel</th>
+                        <th>Nome</th>
+                        <th>Recurso</th>
+                        <th class="text-center">Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach($this->data as $entity): ?>
+                    <tr>
+                        <td class="hidden-xs hidden-sm"><?php echo $entity->getId(); ?></td>
+                        <td><?php echo $entity->getPapel()->getName(); ?></td>
+                        <td><?php echo $entity->getName(); ?></td>
+                        <td><?php echo $entity->getRecurso()->getName(); ?></td>
+                        <td class="text-center">
+                            <a class="btn btn-success" title="Editar" href="<?php echo $this->url('acl-all/default',
+                                    array('controller'=>'privilege','action'=>'register','id'=>$entity->getId())); ?>">
+                                <span class="hidden-xs hidden-sm"><i class="fa fa-pencil-square-o"></i> Editar</span>
+                                <span class="hidden-md hidden-lg"><i class="fa fa-pencil-square-o"></i></span>
+                            </a>
+                            <a class="btn btn-danger" title="Deletar" href="<?php echo $this->url('acl-all/default',
+                                    array('controller'=>'privilege','action'=>'delete','id'=>$entity->getId())); ?>">
+                                <span class="hidden-xs hidden-sm"><i class="fa fa-trash-o"></i> Deletar</span>
+                                <span class="hidden-md hidden-lg"><i class="fa fa-trash-o"></i></span>
+                            </a>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                 </tbody>
+            </table>
+            <div class="text-center">
+                <?php echo $this->paginationControl($this->data,'Sliding','partials/paginator'); ?>
+            </div>
+        </div>
+        </article>
+        <?php } else { ?>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th class="text-center"><strong>Resultados</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-center">Nenhum resultado encontrado</td>
+                    </tr>
+                </tbody>
+            </table>
+        <?php } ?>
+</div>
+<!-- end row -->

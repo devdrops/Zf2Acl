@@ -1,0 +1,18 @@
+<?php
+
+namespace Zf2Acl\Controller;
+
+use Zf2Base\Controller\CrudController;
+use Zend\View\Model\ViewModel;
+
+class PrivilegeController extends CrudController
+{
+    public function __construct()
+    {
+        $this->entity = "Zf2Acl\Entity\Privilege";
+        $this->service = "Zf2Acl\Service\Privilege";
+        $this->form = "Zf2Acl\Form\Privilege";
+        $this->controller = "privilege";
+        $this->route = "acl-all/default";
+    }
+}

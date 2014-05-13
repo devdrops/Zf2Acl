@@ -1,0 +1,18 @@
+<?php if ($this->id) { ?>
+	<h3>Editar Privilégio</h3>
+<?php } else { ?>
+	<h3>Novo Privilégio</h3>
+<?php } ?>
+
+<br />
+
+<?php
+$form = $this->form; 
+
+$form->setAttribute('action', $this->url('acl-all/default',array('controller'=>'privilegio','action'=>'cadastro')));
+
+$form->prepare();
+echo $this->form()->openTag($form);
+echo $this->formCollection($form);
+echo $this->form()->closeTag();
+?>
