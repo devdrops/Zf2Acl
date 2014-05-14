@@ -1,38 +1,38 @@
 <?php
 
-namespace DftAcl\Fixture;
+namespace Zf2Acl\Fixture;
 
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
-use DftAcl\Entity\Role;
+use Zf2Acl\Entity\Role;
 
 class LoadRole extends AbstractFixture implements OrderedFixtureInterface
 {
 	public function load(ObjectManager $manager)
     {
         $role = new Role;
-        $role->setName("Visitante");
+        $role->setName("Visit");
         $manager->persist($role);
 
-        $visitante = $manager->getReference('DftAcl\Entity\Role',1);
+        $visit = $manager->getReference('Zf2Acl\Entity\Role',1);
 
         $role = new Role;
-        $role->setName("Cliente")
-              ->setParent($visitante);
+        $role->setName("Client")
+              ->setParent($visit);
         $manager->persist($role);
 
         $role = new Role;
-        $role->setName("Funcionario")
-              ->setParent($visitante)
+        $role->setName("Functionary")
+              ->setParent($visit)
               ->setLayout("layout/admin")
         	  ->setRedirect("home");
         $manager->persist($role);
 
         $role = new Role;
-        $role->setName("Administrador")
-        	  ->setParent($visitante)
+        $role->setName("Administrator")
+        	  ->setParent($visit)
               ->setLayout("layout/admin")
               ->setRedirect("home");
         $manager->persist($role);

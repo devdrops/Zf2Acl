@@ -8,7 +8,7 @@ return array(
             'acl-all' => array(
                 'type' => 'Literal',
                 'options' => array(
-                    'route' => '/dev/acl',
+                    'route' => '/admin/acl',
                     'defaults' => array(
                         '__NAMESPACE__' => 'Zf2Acl\Controller',
                         'controller' => 'Role',

@@ -1,6 +1,6 @@
 <?php
 
-namespace DftAcl\Entity;
+namespace Zf2Acl\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Zend\Stdlib\Hydrator;
@@ -11,7 +11,7 @@ use Zend\Stdlib\Hydrator;
  * @ORM\Table(name="acl_privilege")
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
- * @ORM\Entity(repositoryClass="DftAcl\Entity\PrivilegeRepository")
+ * @ORM\Entity(repositoryClass="Zf2Acl\Entity\PrivilegeRepository")
  */
 class Privilege
 {
@@ -46,9 +46,9 @@ class Privilege
     private $updated;
 
     /**
-     * @var \DftAcl\Entity\Resource
+     * @var \Zf2Acl\Entity\Resource
      *
-     * @ORM\ManyToOne(targetEntity="DftAcl\Entity\Resource")
+     * @ORM\ManyToOne(targetEntity="Zf2Acl\Entity\Resource")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="resource_id", referencedColumnName="id", onDelete="CASCADE", nullable=false)
      * })
@@ -56,9 +56,9 @@ class Privilege
     private $resource;
 
     /**
-     * @var \DftAcl\Entity\Role
+     * @var \Zf2Acl\Entity\Role
      *
-     * @ORM\ManyToOne(targetEntity="DftAcl\Entity\Role")
+     * @ORM\ManyToOne(targetEntity="Zf2Acl\Entity\Role")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="role_id", referencedColumnName="id", onDelete="CASCADE", nullable=false)
      * })
@@ -160,10 +160,10 @@ class Privilege
     /**
      * Set resource
      *
-     * @param \DftAcl\Entity\Resource $resource
+     * @param \Zf2Acl\Entity\Resource $resource
      * @return Privilege
      */
-    public function setResource(\DftAcl\Entity\Resource $resource = null)
+    public function setResource(\Zf2Acl\Entity\Resource $resource = null)
     {
         $this->resource = $resource;
 
@@ -173,7 +173,7 @@ class Privilege
     /**
      * Get resource
      *
-     * @return \DftAcl\Entity\Resource
+     * @return \Zf2Acl\Entity\Resource
      */
     public function getResource()
     {
@@ -183,10 +183,10 @@ class Privilege
     /**
      * Set role
      *
-     * @param \DftAcl\Entity\Role $role
+     * @param \Zf2Acl\Entity\Role $role
      * @return Privilege
      */
-    public function setRole(\DftAcl\Entity\Role $role = null)
+    public function setRole(\Zf2Acl\Entity\Role $role = null)
     {
         $this->role = $role;
 
@@ -196,7 +196,7 @@ class Privilege
     /**
      * Get role
      *
-     * @return \DftAcl\Entity\Role
+     * @return \Zf2Acl\Entity\Role
      */
     public function getRole()
     {

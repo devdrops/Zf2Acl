@@ -12,9 +12,9 @@ class LoadPrivilege extends AbstractFixture implements OrderedFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
-        $visitante   = $manager->getReference('Zf2Acl\Entity\Role',1);
-        $cliente     = $manager->getReference('Zf2Acl\Entity\Role',2);
-        $funcionario = $manager->getReference('Zf2Acl\Entity\Role',3);
+        $visit       = $manager->getReference('Zf2Acl\Entity\Role',1);
+        $client      = $manager->getReference('Zf2Acl\Entity\Role',2);
+        $functionary = $manager->getReference('Zf2Acl\Entity\Role',3);
         $admin       = $manager->getReference('Zf2Acl\Entity\Role',4);
         $developer   = $manager->getReference('Zf2Acl\Entity\Role',5);
 
@@ -24,12 +24,11 @@ class LoadPrivilege extends AbstractFixture implements OrderedFixtureInterface
         $application  = $manager->getReference('Zf2Acl\Entity\Resource',4);
         $auth         = $manager->getReference('Zf2Acl\Entity\Resource',5);
         $usuario      = $manager->getReference('Zf2Acl\Entity\Resource',6);
-        $empresa      = $manager->getReference('Zf2Acl\Entity\Resource',7);
 
         // Visitante
         $privilege = new Privilege;
         $privilege->setName("All")
-                  ->setRole($visitante)
+                  ->setRole($visit)
                   ->setResource($auth);
         $manager->persist($privilege);
         // Visitante FIM
@@ -37,7 +36,7 @@ class LoadPrivilege extends AbstractFixture implements OrderedFixtureInterface
         // Funcionario
         $privilege = new Privilege;
         $privilege->setName("index")
-                  ->setRole($funcionario)
+                  ->setRole($functionary)
                   ->setResource($application);
         $manager->persist($privilege);
         // Funcionario FIm

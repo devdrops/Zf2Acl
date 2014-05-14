@@ -34,17 +34,12 @@ class LoadResource extends AbstractFixture implements OrderedFixtureInterface
 
         /*id = 5*/
         $resource = new Resource;
-        $resource->setName("DftUser\Controller\Auth");
+        $resource->setName("Zf2User\Controller\Auth");
         $manager->persist($resource);
 
         /*id = 6*/
         $resource = new Resource;
-        $resource->setName("DftUser\Controller\Index");
-        $manager->persist($resource);
-
-        /*id = 7*/
-        $resource = new Resource;
-        $resource->setName("DftBusiness\Controller\Index");
+        $resource->setName("Zf2User\Controller\Index");
         $manager->persist($resource);
 
         $manager->flush();

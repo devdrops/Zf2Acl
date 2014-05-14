@@ -1,18 +1,79 @@
-<?php if ($this->id) { ?>
-	<h3>Editar Papel</h3>
-<?php } else { ?>
-	<h3>Novo Papel</h3>
-<?php } ?>
+<!-- row -->
+<div class="row">
+    <!-- col -->
+    <div class="col-xs-12 col-sm-8 col-md-6 col-lg-6">
+        <h3><i class="fa-fw fa fa-home"></i> <?php echo $this->translate('Role') ?>
+            <span>> <?php echo ($this->id) ? $this->translate('Edit') : $this->translate('New') ; ?></span>
+        </h3>
+    </div>
+    <div class="col-xs-12 col-md-6 col-lg-6 text-right">
+        <button type="reset" class="btn btn-default" onclick="javascript:history.go('-1')">
+            <i class="fa fa-hand-o-left"></i> <?php echo $this->translate('Back') ?>
+        </button>
+    </div><!-- end col -->
+</div><!-- end row -->
+<!-- row -->
+<div class="row">
+    <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <?php
+            $form = $this->form;
+            $form->setAttribute('action',$this->url('acl-all/default',array('controller'=>'role','action'=>'register','id'=>$this->id)));
+            $form->prepare();
+        ?>
+        <?php echo $this->form()->openTag($form); ?>
+        <?php echo $this->formHidden($form->get('id')); ?>
 
-<br />
+        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 <?php echo ($this->formElementErrors($form->get('name'))) ? 'has-error' : '' ; ?>">
+            <?php echo $this->translate($this->formLabel($form->get('name'))); ?>
+            <div class="col-sm-10">
+                <?php echo $this->formInput($form->get('name')); ?>
+            </div>
+            <div class="col-sm-10 col-sm-offset-2">
+                <div class="help-block"><?php echo $this->translate($this->formElementErrors($form->get('name'))); ?></div>
+            </div>
+        </div>
+        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 <?php echo ($this->formElementErrors($form->get('layout'))) ? 'has-error' : '' ; ?>">
+            <?php echo $this->translate($this->formLabel($form->get('layout'))); ?>
+            <div class="col-sm-10">
+                <?php echo $this->formInput($form->get('layout')); ?>
+            </div>
+            <div class="col-sm-10 col-sm-offset-2">
+                <div class="help-block"><?php echo $this->translate($this->formElementErrors($form->get('layout'))); ?></div>
+            </div>
+        </div>
+        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 <?php echo ($this->formElementErrors($form->get('redirect'))) ? 'has-error' : '' ; ?>">
+            <?php echo $this->translate($this->formLabel($form->get('redirect'))); ?>
+            <div class="col-sm-10">
+                <?php echo $this->formInput($form->get('redirect')); ?>
+            </div>
+            <div class="col-sm-10 col-sm-offset-2">
+                <div class="help-block"><?php echo $this->translate($this->formElementErrors($form->get('redirect'))); ?></div>
+            </div>
+        </div>
+        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 <?php echo ($this->formElementErrors($form->get('parent'))) ? 'has-error' : '' ; ?>">
+            <?php echo $this->formLabel($form->get('parent')); ?>
+            <div class="col-sm-10">
+                <?php echo $this->formSelect($form->get('parent')); ?>
+            </div>
+            <div class="col-sm-10 col-sm-offset-2">
+                <div class="help-block"><?php echo $this->formElementErrors($form->get('parent')); ?></div>
+            </div>
+        </div>
+        <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 <?php echo ($this->formElementErrors($form->get('is_admin'))) ? 'has-error' : '' ; ?>">
+            <div class="col-xs-12">
+                <?php echo $this->formCheckbox($form->get('is_admin')); ?>
+                <?php echo $this->translate($this->formLabel($form->get('is_admin'))); ?>
+            </div>
+            <div class="col-sm-10 col-sm-offset-2">
+                <div class="help-block"><?php echo $this->translate($this->formElementErrors($form->get('is_admin'))); ?></div>
+            </div>
+        </div>
+        <div class="col-xs-10 col-sm-offset-2">
+            <?php echo $this->formButton()->openTag($form->get('submit')); ?>
+                <i class="fa fa-check"></i> <?php echo $this->translate($form->get('submit')->getValue()); ?>
+            <?php echo $this->formButton()->closeTag(); ?>
+        </div>
 
-<?php
-$form = $this->form; 
-
-$form->setAttribute('action', $this->url('acl-all/default',array('controller'=>'role','action'=>'register')));
-
-$form->prepare();
-echo $this->form()->openTag($form);
-echo $this->formCollection($form);
-echo $this->form()->closeTag();
-?>
+        <?php echo $this->form()->closeTag(); ?>
+    </article>
+</div>
