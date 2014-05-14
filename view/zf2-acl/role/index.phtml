@@ -61,7 +61,7 @@
                         <td>
                             <?php echo is_null($entity->getParent()) ? 'NULL' : $entity->getParent()->getName(); ?>
                         </td>
-                        <td class="text-center"><?php echo ($entity->getIsAdmin()) ? sprintf($this->translate('%sYes%s'), '<span class="label label-success">', '</span>') : sprintf($this->translate('%sNo%s'), '<span class="label label-danger">', '</span>') ; ?></td>
+                        <td class="text-center"><?php echo ($entity->getDeveloper()) ? sprintf($this->translate('%sYes%s'), '<span class="label label-success">', '</span>') : sprintf($this->translate('%sNo%s'), '<span class="label label-danger">', '</span>') ; ?></td>
                         <td class="text-center">
                             <a class="btn btn-xs btn-success" title="<?php echo $this->translate('Edit') ?>" href="<?php echo $this->url('acl-all/default', array('controller' => 'role', 'action' => 'register', 'id' => $entity->getId())); ?>">
                                 <span class="hidden-xs hidden-sm">
