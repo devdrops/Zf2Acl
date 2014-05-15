@@ -23,13 +23,19 @@ class LoadPrivilege extends AbstractFixture implements OrderedFixtureInterface
         $aclPrivi     = $manager->getReference('Zf2Acl\Entity\Resource',3);
         $application  = $manager->getReference('Zf2Acl\Entity\Resource',4);
         $auth         = $manager->getReference('Zf2Acl\Entity\Resource',5);
-        $usuario      = $manager->getReference('Zf2Acl\Entity\Resource',6);
+        $user         = $manager->getReference('Zf2Acl\Entity\Resource',6);
 
         // Visitante
         $privilege = new Privilege;
         $privilege->setName("All")
                   ->setRole($visit)
                   ->setResource($auth);
+        $manager->persist($privilege);
+
+        $privilege = new Privilege;
+        $privilege->setName("index")
+                  ->setRole($visit)
+                  ->setResource($application);
         $manager->persist($privilege);
         // Visitante FIM
 
@@ -39,21 +45,22 @@ class LoadPrivilege extends AbstractFixture implements OrderedFixtureInterface
                   ->setRole($functionary)
                   ->setResource($application);
         $manager->persist($privilege);
+
+        $privilege = new Privilege;
+        $privilege->setName("admin")
+                  ->setRole($functionary)
+                  ->setResource($application);
+        $manager->persist($privilege);
         // Funcionario FIm
 
         // Admin
         $privilege = new Privilege;
         $privilege->setName("All")
                   ->setRole($admin)
-                  ->setResource($usuario);
-        $manager->persist($privilege);
-
-        $privilege = new Privilege;
-        $privilege->setName("index")
-                  ->setRole($admin)
-                  ->setResource($application);
+                  ->setResource($user);
         $manager->persist($privilege);
         // Admin fim
+
 
         $manager->flush();
     }

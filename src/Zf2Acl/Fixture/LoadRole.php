@@ -26,21 +26,23 @@ class LoadRole extends AbstractFixture implements OrderedFixtureInterface
         $role = new Role;
         $role->setName("Functionary")
               ->setParent($visit)
-              ->setLayout("layout/layout")
-        	  ->setRedirect("home");
+              ->setLayout("layout/admin")
+        	  ->setRedirect("home-admin");
         $manager->persist($role);
+
+		$functionary = $manager->getReference('Zf2Acl\Entity\Role',3);
 
         $role = new Role;
         $role->setName("Administrator")
-        	  ->setParent($visit)
-              ->setLayout("layout/layout")
-              ->setRedirect("home");
+        	  ->setParent($functionary)
+              ->setLayout("layout/admin")
+              ->setRedirect("home-admin");
         $manager->persist($role);
 
         $role = new Role;
         $role->setName("Developer")
               ->setDeveloper(1)
-              ->setLayout("layout/layout")
+              ->setLayout("layout/developer")
               ->setRedirect("home-dev");
         $manager->persist($role);
 

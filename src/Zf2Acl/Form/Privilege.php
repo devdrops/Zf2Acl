@@ -34,7 +34,7 @@ class Privilege extends Form
         ));
 
         $this->add(array(
-            'name' => 'role',
+            'name' => 'parent',
             'type' => 'DoctrineModule\Form\Element\ObjectSelect',
             'attributes' => array(
                 'class' => 'form-control col-xs-12 col-sm-10 col-md-10 col-lg-10',
@@ -51,7 +51,7 @@ class Privilege extends Form
         ));
 
         $this->add(array(
-            'name' => 'resource',
+            'name' => 'parent',
             'type' => 'DoctrineModule\Form\Element\ObjectSelect',
             'attributes' => array(
                 'class' => 'form-control col-xs-12 col-sm-10 col-md-10 col-lg-10',
