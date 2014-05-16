@@ -5,7 +5,7 @@
 
 namespace Zf2Acl\Service;
 
-use DftBase\Service\AbstractService;
+use Zf2Base\Service\AbstractService;
 use Doctrine\ORM\EntityManager;
 
 class Privilege extends AbstractService
