@@ -15,4 +15,11 @@ class Role extends AbstractService
         parent::__construct($em);
         $this->entity = "Zf2Acl\Entity\Role";
     }
+
+    public function persist(array $data, $id = null)
+    {
+        $data['parent'] = $this->em->getReference($this->entity, $data['parent']);
+
+        return parent::persist($data, $id);
+    }
 }

@@ -269,6 +269,9 @@ class Role
     public function toArray()
     {
         $hydrator = new Hydrator\ClassMethods();
-        return $hydrator->extract($this);
+        $array = $hydrator->extract($this);
+        $array['parent'] = $this->getParent()->getId();
+
+        return $array;
     }
 }

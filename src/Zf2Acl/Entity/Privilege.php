@@ -212,6 +212,10 @@ class Privilege
     public function toArray()
     {
         $hydrator = new Hydrator\ClassMethods();
-        return $hydrator->extract($this);
+        $array = $hydrator->extract($this);
+        $array['role'] = $this->getRole()->getId();
+        $array['resource'] = $this->getResource()->getId();
+
+        return $array;
     }
 }
