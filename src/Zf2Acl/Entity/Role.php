@@ -270,7 +270,7 @@ class Role
     {
         $hydrator = new Hydrator\ClassMethods();
         $array = $hydrator->extract($this);
-        $array['parent'] = $this->getParent()->getId();
+        $array['parent'] = $this->getParent() ? $this->getParent()->getId() : false ;
 
         return $array;
     }
