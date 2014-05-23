@@ -23,7 +23,9 @@ class LoadRole extends AbstractFixture implements OrderedFixtureInterface
 
         $role = new Role;
         $role->setName("Client")
-              ->setParent($visit);
+            ->setParent($visit)
+			->setLayout("layout/client")
+			->setRedirect("home-client");;
         $manager->persist($role);
 
         $role = new Role;

@@ -40,15 +40,16 @@ class LoadPrivilege extends AbstractFixture implements OrderedFixtureInterface
                   ->setRole($visit)
                   ->setResource($application);
         $manager->persist($privilege);
-        // Visitante FIM
 
-        // Funcionario
+        // Cliente
         $privilege = new Privilege;
-        $privilege->setName("index")
-                  ->setRole($functionary)
+        $privilege->setName("client")
+                  ->setRole($client)
                   ->setResource($application);
         $manager->persist($privilege);
+        // Cliente FIM
 
+        // Funcionario
         $privilege = new Privilege;
         $privilege->setName("admin")
                   ->setRole($functionary)
@@ -63,7 +64,6 @@ class LoadPrivilege extends AbstractFixture implements OrderedFixtureInterface
                   ->setResource($user);
         $manager->persist($privilege);
         // Admin fim
-
 
         $manager->flush();
     }
